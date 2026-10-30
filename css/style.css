@@ -1,0 +1,161 @@
+/* ============================================================================
+   STYLE — Inventaire RPG (OSE / AD&D 1E)
+   Ambiance parchemin sombre. Toutes les classes utilisées par js/app.js
+   sont définies ici (aucun style inline dans le rendu).
+   ============================================================================ */
+
+:root { font-family: Georgia, 'Times New Roman', serif; background: #1a1410; color: #e8dcc8; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 16px; background: linear-gradient(#1a1410, #221a12); min-height: 100vh; }
+
+h1 { font-variant: small-caps; letter-spacing: 2px; margin: 0 0 4px; color: #d4a24e; text-align: center; }
+.sub { text-align: center; color: #8a7a5e; font-style: italic; margin-bottom: 18px; }
+
+/* ── Onglets ────────────────────────────────────────────────────────────── */
+#tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 16px; }
+.tab { padding: 8px 16px; background: #2d2318; border: 1px solid #4a3a26; border-radius: 8px;
+       cursor: pointer; font-size: 15px; color: #c8b894; }
+.tab.active { background: #4a3a26; color: #f0e0c0; border-color: #d4a24e; }
+.addchar { font-style: italic; opacity: .8; }
+.tabmeta { font-size: 11px; color: #8a7a5e; }
+.tabmv { font-size: 11px; color: #5a7a3a; }
+
+/* ── Fiche personnage ───────────────────────────────────────────────────── */
+.card { max-width: 760px; margin: 0 auto 24px; background: #261e14; border: 1px solid #4a3a26;
+        border-radius: 12px; padding: 16px; box-shadow: 0 4px 12px rgba(0,0,0,.4); }
+.charhead { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+.charname { font-size: 22px; font-weight: bold; color: #f0e0c0; }
+
+.statgroup { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.statlabel { font-size: 12px; color: #8a7a5e; display: flex; align-items: center; gap: 6px; }
+.statval { color: #c8b894; }
+.statval.ca { font-size: 15px; }
+.stat-sel { width: 95px; flex: 0 0 auto; font-size: 13px; padding: 4px 6px; }
+.stat-sel.narrow { width: 64px; }
+.maxload-inp { width: 80px; display: inline-block; margin-left: 6px; }
+#rename-input, #newchar-name { width: 220px; background: #16100a; color: #e8dcc8; border: 1px solid #4a3a26;
+                               border-radius: 6px; padding: 4px 8px; font-family: inherit; font-size: 16px; }
+#newchar-name { width: 140px; font-size: 13px; }
+
+/* ── Barres de charge ──────────────────────────────────────────────────── */
+.loadbar { margin: 12px 0; }
+.barbg { background: #16100a; border: 1px solid #4a3a26; border-radius: 6px; height: 22px; overflow: hidden; }
+.barfg { height: 100%; background: #5a7a3a; transition: width .3s, background .3s; text-align: center;
+         font-size: 12px; line-height: 22px; color: #101010; font-weight: bold; white-space: nowrap; }
+.barfg.warn { background: #d4a24e; }
+.barfg.over { background: #b04030; color: #fff; }
+.loadtext { font-size: 13px; color: #a89878; text-align: center; margin-top: 4px; }
+.secload { width: 120px; }
+.secload .barbg { height: 12px; }
+.secload .barfg { font-size: 0; }
+
+/* Barre d'encombrement segmentée */
+.encbar { position: relative; height: 26px; }
+.enczone { position: absolute; top: 0; bottom: 0; }
+.encz0 { background: #2a3a1a; } .encz1 { background: #3a3418; } .encz2 { background: #3a2c14; }
+.encz3 { background: #3a2016; } .encz4 { background: #3a1410; } .encz5 { background: #2a0a0a; }
+.encfill { position: absolute; top: 0; bottom: 0; opacity: .85; }
+.encfill.enc0 { background: #5a7a3a; } .encfill.enc1 { background: #8a7a30; } .encfill.enc2 { background: #b07028; }
+.encfill.enc3 { background: #a04820; } .encfill.enc4 { background: #a03018; } .encfill.enc5 { background: #801818; }
+.encmark { position: absolute; top: -3px; bottom: -3px; width: 2px; background: #f0e0c0; box-shadow: 0 0 3px #000; }
+.enclegend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 5px; }
+.encleg { font-size: 12px; color: #a89878; display: flex; align-items: center; gap: 4px; }
+.encleg.encactive { color: #f0e0c0; font-weight: bold; }
+.encrange { color: #8a7a5e; }
+.encdot { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+.encsummary { font-size: 14px; }
+.atkpen { color: #c05050; }
+
+/* ── Sections ────────────────────────────────────────────────────────────── */
+.section { margin-top: 16px; border: 1px solid #3a2e1e; border-radius: 8px; background: #221a12; padding: 10px 12px; }
+.sechead { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+.sectitle { font-variant: small-caps; letter-spacing: 1px; font-size: 15px; color: #d4a24e; font-weight: bold; }
+.seccount { font-size: 12px; color: #8a7a5e; }
+
+/* ── Tables d'objets ─────────────────────────────────────────────────────── */
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+     color: #8a7a5e; padding: 5px 4px; border-bottom: 1px solid #4a3a26; }
+th.w, td.w { text-align: right; white-space: nowrap; }
+td { padding: 7px 4px; border-bottom: 1px solid #33291c; font-size: 14px; color: #e8dcc8; }
+td.w { color: #c8b894; }
+th.arw, td.arw { width: 22px; text-align: center; padding: 4px 0; }
+.arw span { color: #8a7a5e; cursor: pointer; font-size: 13px; user-select: none; display: block; line-height: 1.1; }
+.arw span:hover { color: #f0e0c0; }
+.arw span.off { visibility: hidden; }
+.mv { color: #8a7a5e; cursor: pointer; font-size: 14px; padding: 0 4px; user-select: none; }
+.mv:hover { color: #d4a24e; }
+.del { color: #c05050; cursor: pointer; font-size: 17px; padding: 0 6px; user-select: none; }
+.del:hover { color: #ff7060; }
+.rowitem { cursor: context-menu; }
+.empty { text-align: center; color: #6a5a42; font-style: italic; padding: 10px; }
+
+/* ── Conteneurs ─────────────────────────────────────────────────────────── */
+.container { margin-top: 10px; }
+.contname { font-size: 13px; color: #c8b894; margin: 6px 0 2px; font-weight: bold; }
+.contright { text-align: right; margin-top: 2px; }
+
+/* ── Ligne Monnaie ──────────────────────────────────────────────────────── */
+.coinrow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 8px;
+           padding: 6px 8px; background: #1d1610; border: 1px solid #33291c; border-radius: 6px; }
+.coinlabel { font-variant: small-caps; letter-spacing: 1px; font-size: 13px; color: #d4a24e; font-weight: bold; }
+.coinfield label { font-size: 12px; color: #c8b894; }
+.coininp { width: 64px; display: inline-block; text-align: center; font-size: 13px; padding: 3px 6px; }
+.cointotal { margin-left: auto; }
+
+/* ── Formulaire d'ajout ─────────────────────────────────────────────────── */
+.newrow { display: grid; grid-template-columns: 140px 2fr 120px 70px 70px 90px; gap: 8px; margin-top: 14px; }
+.newrow select { font-size: 13px; }
+#in-w:read-only { color: #a89878; }
+
+/* ── Champs et boutons ──────────────────────────────────────────────────── */
+input, select { background: #16100a; color: #e8dcc8; border: 1px solid #4a3a26; border-radius: 6px;
+                padding: 6px 8px; font-family: inherit; font-size: 14px; width: 100%; }
+input:focus, select:focus { outline: 1px solid #d4a24e; }
+button { background: #4a3a26; color: #f0e0c0; border: 1px solid #d4a24e; border-radius: 8px;
+         padding: 8px 14px; cursor: pointer; font-family: inherit; font-size: 14px; }
+button:hover { background: #5a4a30; }
+button.ghost { border-color: #8a7a5e; font-size: 12px; padding: 4px 10px; }
+button.nomargin { margin-left: 0; }
+.contsfoot { text-align: right; margin-top: 8px; }
+
+/* ── Menu contextuel ────────────────────────────────────────────────────── */
+#ctxmenu { position: fixed; z-index: 1000; background: #2d2318; border: 1px solid #d4a24e; border-radius: 8px;
+           padding: 6px; min-width: 220px; box-shadow: 0 6px 16px rgba(0,0,0,.6); font-size: 13px; }
+#ctxmenu .ctxhead { font-variant: small-caps; letter-spacing: 1px; color: #d4a24e; padding: 4px 8px; font-weight: bold; }
+#ctxmenu .ctxchar { color: #8a7a5e; padding: 3px 8px 1px; font-size: 11px; text-transform: uppercase; }
+#ctxmenu .ctxopt { padding: 5px 12px; cursor: pointer; border-radius: 5px; color: #e8dcc8; }
+#ctxmenu .ctxopt:hover { background: #4a3a26; }
+#ctxmenu .ctxsub { color: #8a7a5e; font-size: 11px; }
+#ctxmenu .ctxempty { padding: 5px 8px; color: #6a5a42; font-style: italic; }
+
+/* ── Menu ☰ et dialogues ───────────────────────────────────────────────── */
+.menubox { position: fixed; top: 10px; right: 12px; z-index: 50; }
+.hambbtn { background: #241a10; color: #e8dcc8; border: 1px solid #4a3a26; border-radius: 6px;
+           font-size: 18px; line-height: 1; padding: 6px 10px; cursor: pointer; }
+.hambbtn:hover { background: #3a2c1a; }
+.datamenu { position: absolute; top: 44px; right: 0; background: #241a10; border: 1px solid #4a3a26;
+            border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,.5); display: none; min-width: 190px; }
+.datamenu.open { display: flex; flex-direction: column; }
+.datamenu button { background: none; border: none; color: #e8dcc8; text-align: left;
+                   font-family: inherit; font-size: 13px; padding: 10px 14px; cursor: pointer; }
+.datamenu button:hover { background: #3a2c1a; border-radius: 6px; }
+.modaldlg { display: none; position: fixed; inset: 0; background: rgba(10,6,2,.75); z-index: 100;
+            align-items: center; justify-content: center; }
+.modalbox { background: #241a10; border: 1px solid #4a3a26; border-radius: 10px;
+            padding: 16px; width: min(640px, 92vw); box-shadow: 0 8px 30px rgba(0,0,0,.6); }
+.modalbox .dlgtitle { font-size: 15px; font-weight: bold; margin-bottom: 8px; }
+.modalbox .dlghint { font-size: 12px; color: #8a7a5e; margin-bottom: 8px; }
+#export-json { width: 100%; height: 260px; background: #16100a; color: #e8dcc8; border: 1px solid #4a3a26;
+              border-radius: 6px; font-family: monospace; font-size: 11px; padding: 8px; resize: vertical; }
+.dlgactions { display: flex; gap: 8px; margin-top: 10px; justify-content: flex-end; }
+
+/* ── Pied de page ───────────────────────────────────────────────────────── */
+.footnote { text-align: center; color: #6a5a42; font-size: 12px; margin-top: 20px; }
+
+/* ── Petits écrans ─────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .newrow { grid-template-columns: 1fr 1fr; }
+  .card { padding: 10px; }
+  .charname { font-size: 18px; }
+}

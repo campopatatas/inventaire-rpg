@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventaire du Groupe — OSR (OSE / AD&D 1E)</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <h1>⚔️ Inventaire du Groupe</h1>
+  <div class="sub">Suivi des inventaires — parties OSR (OSE / AD&amp;D 1E)</div>
+
+  <!-- Onglets des personnages (générés par js/app.js) -->
+  <div id="tabs"></div>
+
+  <!-- Menu ☰ : export / import -->
+  <div class="menubox">
+    <button class="hambbtn" title="Menu" onclick="toggleDataMenu(event)">☰</button>
+    <div id="datamenu" class="datamenu">
+      <button onclick="exportData(); closeDataMenu()">⬇ Exporter (JSON)</button>
+      <button onclick="importData(); closeDataMenu()">⬆ Importer (JSON)</button>
+    </div>
+    <input type="file" id="import-file" accept=".json,application/json" style="display:none">
+  </div>
+
+  <!-- Boîte de dialogue d'export -->
+  <div id="export-dialog" class="modaldlg" onclick="closeExportDialog(event)">
+    <div class="modalbox">
+      <div class="dlgtitle">⬇ Exporter les inventaires</div>
+      <div class="dlghint">Téléchargez le fichier, ou copiez le contenu dans un fichier texte sauvegardé en .json</div>
+      <textarea id="export-json" readonly></textarea>
+      <div class="dlgactions">
+        <button onclick="closeExportDialog()">Fermer</button>
+        <button class="ghost" onclick="copyJSON()">Copier</button>
+        <button onclick="downloadJSON()">Télécharger le fichier</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fiche du personnage actif (générée par js/app.js) -->
+  <div id="charcard" class="card"></div>
+
+  <div class="footnote">Poids en livres (1 liv ≈ 0,5 kg). Les données sont sauvegardées automatiquement dans ce navigateur.</div>
+
+  <!-- Ordre important : configuration, puis données, puis application -->
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
