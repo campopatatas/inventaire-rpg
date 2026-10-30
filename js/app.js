@@ -660,6 +660,15 @@ function copyJSON() {
   else alert("Copie impossible : sélectionnez le texte ci-dessus et copiez-le manuellement (Ctrl+C).");
 }
 function importData() { document.getElementById("import-file").click(); }
+
+// Remise à zéro complète (retour aux données par défaut de js/data.js)
+function resetAll() {
+  if (!confirm("Tout effacer ? Ceci supprimera TOUS les personnages, conteneurs et monnaies sauvegardés dans ce navigateur (sauf si tu les as exportés).\n\nContinuer ?")) return;
+  data = JSON.parse(JSON.stringify(DEFAULT_DATA));
+  normalizeData();
+  save();
+  render();
+}
 function toggleDataMenu(e) {
   e.stopPropagation();
   document.getElementById("datamenu").classList.toggle("open");
